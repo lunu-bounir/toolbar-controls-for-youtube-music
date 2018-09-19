@@ -1,7 +1,7 @@
 'use strict';
 
 {
-  const playerBar = document.querySelector('div.ytmusic-player-bar');
+  const playerBar = document.querySelector('ytmusic-player-bar');
   const mode = playerBar.querySelector('[aria-label="Pause"]') ? 'play' : 'pause';
   const middle = playerBar.querySelector('.middle-controls');
   const song = {
@@ -48,6 +48,20 @@
     };
   });
 
+  let like = 'none';
+  try {
+    if (playerBar.querySelector('.like').getAttribute('aria-pressed') === 'true') {
+      like = 'liked';
+    }
+  }
+  catch(e) {}
+  try {
+    if (playerBar.querySelector('.dislike').getAttribute('aria-pressed') === 'true') {
+      like = 'disliked';
+    }
+  }
+  catch(e) {}
+
   const repeat = playerBar.querySelector('.repeat').getAttribute('aria-label').split(' ')[1];
   //
   const report = {
@@ -58,7 +72,8 @@
     volume,
     progress,
     playlist,
-    repeat
+    repeat,
+    like
   };
   delete report.progress.container;
 

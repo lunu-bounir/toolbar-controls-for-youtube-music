@@ -19,7 +19,7 @@ chrome.storage.local.get({
       if (doUpdate) {
         const p = Boolean(prefs.version);
         window.setTimeout(() => chrome.tabs.create({
-          url: chrome.runtime.getManifest().homepage_url + '?version=' + version +
+          url: chrome.runtime.getManifest().homepage_url + '&version=' + version +
             '&type=' + (p ? ('upgrade&p=' + prefs.version) : 'install'),
           active: p === false
         }), 3000);
@@ -31,6 +31,6 @@ chrome.storage.local.get({
 {
   const {name, version} = chrome.runtime.getManifest();
   chrome.runtime.setUninstallURL(
-    chrome.runtime.getManifest().homepage_url + '?rd=feedback&name=' + name + '&version=' + version
+    chrome.runtime.getManifest().homepage_url + '&rd=feedback&name=' + name + '&version=' + version
   );
 }

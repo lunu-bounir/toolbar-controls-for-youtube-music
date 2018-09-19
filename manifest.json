@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "version": "0.1.0",
-  "name": "Toolbar Control for YouTube Music",
-  "description": "Control YouTube Music player from yuor browser toolbar",
+  "version": "0.1.2",
+  "name": "Toolbar Controls for YouTube Music",
+  "description": "Control YouTube Music player from your browser toolbar area",
 
   "icons": {
     "16": "data/icons/16.png",
@@ -16,7 +16,7 @@
     "512": "data/icons/512.png"
   },
 
-  "homepage_url": "http://add0n.com",
+  "homepage_url": "http://add0n.com/toolbar-music-controls.html?from=youtube",
 
   "permissions": [
     "tabs",
@@ -40,5 +40,12 @@
       "64": "data/icons/64.png"
     },
     "default_popup": "data/player/index.html"
+  },
+
+  "applications": {
+    "gecko": {
+      "id": "{1cb25516-2dd9-4ea3-86ad-6fd863ee2fa1}",
+      "strict_min_version": "52.0"
+    }
   }
 }

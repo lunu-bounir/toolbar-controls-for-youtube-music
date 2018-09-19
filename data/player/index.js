@@ -21,9 +21,9 @@ function report(/* reason */) {
     file: '/data/inject/inspect.js',
     runAt: 'document_start'
   }, results => {
-    if (results && results.length) {
+    if (results && results.length && results[0]) {
       const result = results[0];
-      const {song, time, progress, volume, playlist, repeat} = result;
+      const {song, time, progress, volume, playlist, repeat, like} = result;
       ui.mode = result.mode;
       ui.song.title = song.title;
       ui.song.cover = song.cover;
@@ -34,6 +34,7 @@ function report(/* reason */) {
       ui.volume.level = volume.level;
       ui.volume.mute = volume.mute;
       ui.repeat = repeat;
+      ui.like = like;
       ui.song.artist.populate(song.artist);
       ui.playlist.populate(playlist);
     }
@@ -98,13 +99,13 @@ iframe.addEventListener('load', () => {
       inject(`document.querySelector('.repeat').click();`);
     }
     else if (cmd === 'toggle-like') {
-      inject(`document.querySelector('.like').click();`);
+      inject(`document.querySelector('ytmusic-player-bar .like').click();`);
     }
     else if (cmd === 'toggle-dislike') {
-      inject(`document.querySelector('.dislike').click();`);
+      inject(`document.querySelector('ytmusic-player-bar .dislike').click();`);
     }
     else if (cmd === 'toggle-mute') {
-      inject(`document.querySelector('.volume').click();`);
+      inject(`document.querySelector('ytmusic-player-bar .volume').click();`);
     }
     else if (cmd === 'toggle-play-pause') {
       inject(`document.querySelector('.play-pause-button').click();`);
